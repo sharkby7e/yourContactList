@@ -1,7 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WorkboxPlugin = require("workbox-webpack-plugin");
+const { InjectManifest } = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require("webpack-pwa-manifest");
 
 module.exports = () => {
@@ -25,13 +24,15 @@ module.exports = () => {
         template: "./index.html",
         title: "iContacts",
       }),
-      new MiniCssExtractPlugin(),
-      new WorkboxPlugin.GenerateSW(),
-      new WebpackPwaManifest({
-        name: "iContacts",
-        desription: "keep your contacts safe",
-        start_url: "./",
+      new InjectManifest({
+        swSrc:'./src-sw.js',
+        swDest:'src-sw.js'
       }),
+      // new WebpackPwaManifest({
+      //   name: "iContacts",
+      //   desription: "keep your contacts safe",
+      //   start_url: "/",
+      // }),
     ],
 
     // TODO: Add the correct modules

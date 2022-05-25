@@ -10,6 +10,7 @@
   "dependencies": {
     "idb": "^7.0.1",
     "webpack": "^5.72.1",
+    "webpack-dev-server": "^4.9.0",
     "webpack-pwa-manifest": "^4.3.0"
   },
   "devDependencies": {
